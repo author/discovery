@@ -1,0 +1,505 @@
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
+figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+ul {
+  list-style: none; }
+
+ol {
+  margin: 1.5vw;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav,
+section, summary {
+  display: block; }
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important; }
+
+.width-constraint {
+  min-width: 320px !important;
+  max-width: 1440px !important;
+  margin: 0 auto;
+  padding-left: 6.18vw;
+  padding-right: 6.18vw; }
+  @media screen and (max-width: 320px) {
+    .width-constraint {
+      padding-left: 20px;
+      padding-right: 20px; } }
+  @media screen and (min-width: 1440px) {
+    .width-constraint {
+      padding-left: 89px;
+      padding-right: 89px; } }
+
+.chassis {
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 24px; }
+  .chassis h1 {
+    font-size: 1.6em;
+    line-height: 1.625em;
+    margin-bottom: 1.00431em; }
+  .chassis h2 {
+    font-size: 1.26667em;
+    line-height: 1.29167em;
+    margin-bottom: 1.00837em; }
+  .chassis h3 {
+    font-size: 1em;
+    line-height: 1em;
+    margin-bottom: 0.98885em; }
+  .chassis h4 {
+    font-size: 0.8em;
+    line-height: 0.79167em;
+    margin-bottom: 0.78284em; }
+  .chassis h5 {
+    font-size: 0.8em;
+    line-height: 0.79167em;
+    margin-bottom: 0.78284em; }
+  .chassis h6 {
+    font-size: 0.8em;
+    line-height: 0.79167em;
+    margin-bottom: 0.78284em; }
+  .chassis legend {
+    font-size: 1.26667em;
+    line-height: 1.29167em;
+    margin-bottom: 1.27727em; }
+  .chassis section,
+  .chassis nav,
+  .chassis form {
+    margin-bottom: 2.58885em; }
+  .chassis section section,
+  .chassis nav section,
+  .chassis section nav,
+  .chassis nav nav,
+  .chassis article,
+  .chassis p,
+  .chassis fieldset,
+  .chassis figure,
+  .chassis pre,
+  .chassis blockquote,
+  .chassis table,
+  .chassis canvas,
+  .chassis embed {
+    margin-bottom: 1.6em; }
+  @media screen and (min-width: 320px) and (max-width: 512px) {
+    .chassis {
+      font-size: 15px;
+      line-height: 24px; }
+      .chassis h1 {
+        font-size: 1.6em;
+        line-height: 1.625em; }
+      .chassis h2 {
+        font-size: 1.26667em;
+        line-height: 1.29167em; }
+      .chassis h3 {
+        font-size: 1em;
+        line-height: 1em; }
+      .chassis h4 {
+        font-size: 0.8em;
+        line-height: 0.79167em; }
+      .chassis h5 {
+        font-size: 0.8em;
+        line-height: 0.79167em; }
+      .chassis h6 {
+        font-size: 0.8em;
+        line-height: 0.79167em; }
+      .chassis legend {
+        font-size: 1.26667em;
+        line-height: 1.29167em; }
+      .chassis section,
+      .chassis nav,
+      .chassis form {
+        margin-bottom: 2.58885em; }
+      .chassis section section,
+      .chassis nav section,
+      .chassis section nav,
+      .chassis nav nav,
+      .chassis article,
+      .chassis p,
+      .chassis fieldset,
+      .chassis figure,
+      .chassis pre,
+      .chassis blockquote,
+      .chassis table,
+      .chassis canvas,
+      .chassis embed {
+        margin-bottom: 1.6em; }
+      .chassis input,
+      .chassis textarea {
+        font-size: 15px; }
+      .chassis textarea {
+        line-height: 24px; } }
+  @media screen and (min-width: 512px) and (max-width: 768px) {
+    .chassis {
+      font-size: 16px;
+      line-height: 26px; }
+      .chassis h1 {
+        font-size: 1.625em;
+        line-height: 1.61538em; }
+      .chassis h2 {
+        font-size: 1.25em;
+        line-height: 1.23077em; }
+      .chassis h3 {
+        font-size: 1em;
+        line-height: 1em; }
+      .chassis h4 {
+        font-size: 0.8125em;
+        line-height: 0.80769em; }
+      .chassis h5 {
+        font-size: 0.8125em;
+        line-height: 0.80769em; }
+      .chassis h6 {
+        font-size: 0.8125em;
+        line-height: 0.80769em; }
+      .chassis legend {
+        font-size: 1.25em;
+        line-height: 1.23077em; }
+      .chassis section,
+      .chassis nav,
+      .chassis form {
+        margin-bottom: 2.62931em; }
+      .chassis section section,
+      .chassis nav section,
+      .chassis section nav,
+      .chassis nav nav,
+      .chassis article,
+      .chassis p,
+      .chassis fieldset,
+      .chassis figure,
+      .chassis pre,
+      .chassis blockquote,
+      .chassis table,
+      .chassis canvas,
+      .chassis embed {
+        margin-bottom: 1.625em; }
+      .chassis input,
+      .chassis textarea {
+        font-size: 16px; }
+      .chassis textarea {
+        line-height: 26px; } }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .chassis {
+      font-size: 17px;
+      line-height: 28px; }
+      .chassis h1 {
+        font-size: 1.64706em;
+        line-height: 1.60714em; }
+      .chassis h2 {
+        font-size: 1.29412em;
+        line-height: 1.28571em; }
+      .chassis h3 {
+        font-size: 1em;
+        line-height: 1em; }
+      .chassis h4 {
+        font-size: 0.76471em;
+        line-height: 0.75em; }
+      .chassis h5 {
+        font-size: 0.76471em;
+        line-height: 0.75em; }
+      .chassis h6 {
+        font-size: 0.76471em;
+        line-height: 0.75em; }
+      .chassis legend {
+        font-size: 1.29412em;
+        line-height: 1.28571em; }
+      .chassis section,
+      .chassis nav,
+      .chassis form {
+        margin-bottom: 2.665em; }
+      .chassis section section,
+      .chassis nav section,
+      .chassis section nav,
+      .chassis nav nav,
+      .chassis article,
+      .chassis p,
+      .chassis fieldset,
+      .chassis figure,
+      .chassis pre,
+      .chassis blockquote,
+      .chassis table,
+      .chassis canvas,
+      .chassis embed {
+        margin-bottom: 1.64706em; }
+      .chassis input,
+      .chassis textarea {
+        font-size: 17px; }
+      .chassis textarea {
+        line-height: 28px; } }
+  @media screen and (min-width: 1024px) and (max-width: 1200px) {
+    .chassis {
+      font-size: 18px;
+      line-height: 29px; }
+      .chassis h1 {
+        font-size: 1.61111em;
+        line-height: 1.62069em; }
+      .chassis h2 {
+        font-size: 1.27778em;
+        line-height: 1.27586em; }
+      .chassis h3 {
+        font-size: 1em;
+        line-height: 1em; }
+      .chassis h4 {
+        font-size: 0.77778em;
+        line-height: 0.7931em; }
+      .chassis h5 {
+        font-size: 0.77778em;
+        line-height: 0.7931em; }
+      .chassis h6 {
+        font-size: 0.77778em;
+        line-height: 0.7931em; }
+      .chassis legend {
+        font-size: 1.27778em;
+        line-height: 1.27586em; }
+      .chassis section,
+      .chassis nav,
+      .chassis form {
+        margin-bottom: 2.60683em; }
+      .chassis section section,
+      .chassis nav section,
+      .chassis section nav,
+      .chassis nav nav,
+      .chassis article,
+      .chassis p,
+      .chassis fieldset,
+      .chassis figure,
+      .chassis pre,
+      .chassis blockquote,
+      .chassis table,
+      .chassis canvas,
+      .chassis embed {
+        margin-bottom: 1.61111em; }
+      .chassis input,
+      .chassis textarea {
+        font-size: 18px; }
+      .chassis textarea {
+        line-height: 29px; } }
+  @media screen and (min-width: 1200px) {
+    .chassis {
+      font-size: 19px;
+      line-height: 31px; }
+      .chassis h1 {
+        font-size: 1.63158em;
+        line-height: 1.6129em; }
+      .chassis h2 {
+        font-size: 1.26316em;
+        line-height: 1.25806em; }
+      .chassis h3 {
+        font-size: 1em;
+        line-height: 1em; }
+      .chassis h4 {
+        font-size: 0.78947em;
+        line-height: 0.77419em; }
+      .chassis h5 {
+        font-size: 0.78947em;
+        line-height: 0.77419em; }
+      .chassis h6 {
+        font-size: 0.78947em;
+        line-height: 0.77419em; }
+      .chassis legend {
+        font-size: 1.26316em;
+        line-height: 1.25806em; }
+      .chassis section,
+      .chassis nav,
+      .chassis form {
+        margin-bottom: 2.63995em; }
+      .chassis section section,
+      .chassis nav section,
+      .chassis section nav,
+      .chassis nav nav,
+      .chassis article,
+      .chassis p,
+      .chassis fieldset,
+      .chassis figure,
+      .chassis pre,
+      .chassis blockquote,
+      .chassis table,
+      .chassis canvas,
+      .chassis embed {
+        margin-bottom: 1.63158em; }
+      .chassis input,
+      .chassis textarea {
+        font-size: 19px; }
+      .chassis textarea {
+        line-height: 31px; } }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-size: 100px 100px;
+  background-color: #efefef;
+  position: relative; }
+
+.legal {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Consolas', Arial;
+  max-width: 60vw;
+  min-width: 300px;
+  margin: auto;
+}
+
+.legal .paper {
+  border-radius: 3px;
+  margin: 1vh;
+  background-color: #fefefe;
+  padding: 2vh;
+  color: #393939;
+}
+
+.legal .explain {
+  background-color: gold !important;
+  color: #111111;
+}
+
+.legal .explain li {
+  font-size: smaller;
+}
+
+header, footer {
+  padding: 0 1.1vh .1vh 1.1vh;
+  font-size: smaller;
+  text-align: center;
+}
+
+header {
+  text-align: left;
+}
+
+header a {
+  margin: 0 .5vw 0 0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header a:not(:last-of-type) {
+  border-right: 1px dotted rgba(0,0,0,.13);
+  padding-right: .5vw;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.legal .action {
+  background-color: #efefef;
+  border-radius: 2px;
+  margin: 8px 0;
+  padding: 1.5vh
+}
+
+.agreed {
+  opacity: .5;
+}
+
+.hidden {
+  display: none;
+}
+
+#instructions {
+  background-color: #90C695;
+}
+
+pre {
+  background-color: #313131;
+  padding: 2vh 1vw 0 1vw;
+  margin: 0 !important;
+  border-radius: 3px;
+}
+
+code {
+  font-family: 'Monaco', 'Consolas', 'Courier New', 'Courier', Arial;
+  border-radius: 2px;
+  background-color: #313131;
+  color: #ffffff;
+  margin: 0;
+  padding: 0 6px;
+  overflow: hidden;
+  font-weight: 100;
+}
+
+.webhooks {
+  margin-top: 2vh;
+}
+
+.webhooks > h2 {
+  font-weight: bold;
+  font-size: larger;
+  color: #336699;
+  margin-bottom: 1vh;
+  clear: both;
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,.09);
+}
+
+.webhooks > h3 {
+  color: rgba(0,0,0,.3);
+  margin: .2vh 0;
+}
+
+.webhooks > p {
+  color: rgba(0,0,0,.6);
+}
+
+code > .highlight {
+  color: #59ABE3;
+}
+
+pre > code {
+  padding: 0;
+}
+
+.changefrom {
+  color: #F5D76E;
+}
+
+.changeto {
+  color: #2ECC71;
+}
+
+.comment {
+  color: #666666;
+}
+
+a {
+  color: #336699;
+}

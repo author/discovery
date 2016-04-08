@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html class="no-js">
   <head>
-    <title>discover.author.io</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/chassis/1.0.33/chassis.slim.min.js"></script>
   </head>
-  <body>
-    Placeholder
+  <body class="legal chassis">
+    <br/>
+    <header class="toolbar">
+      <a href="https://author.github.io/discovery">Home</a>
+      <a href="https://author.github.io/api">API</a>
+      <a href="https://author.github.io/webhooks.html">Webhooks</a>
+      <a href="https://author.github.io/legal.html">Legal</a>
+    </header>
+    <div class="paper">
+      <h1>Microservice Discovery</h1>
+      <h2>The Challenge:</h2>
+      <p>Microservices architecture requires the components within the environment to communicate
+      with each other. This implies each service knows how to contact the others. This seemingly
+      simple task becomes more challenging when the makeup of the environment changes, such
+      as adding/removing/updating services.</p>
+      <p><strong>dicovery.author.io</strong> acts as a catalog of microservices. Each microservice
+      can obtain an updated list of other services within it's network. Using the <a href="./api">REST API</a>, managing
+      networks and nodes (services) is a trivial task.</p>
+      <p>For example, a microservice environment may consist of three separate services running
+      indepedently, possibly even on servers around the world. The discovery service provides a single
+      place to retrieve microservice data.</p>
+      <div style="display: flex; justify-content: center;">
+        <img src="./assets/diagram.svg" width="40%"/>
+      </div>
+      <p>Microservice environments are often dynamic. The catalog can change regularly.
+      To support this, the discovery service has a <a href="./webhooks.html">webhook event system</a>.
+      Using this system, it is possible for microservice environments to react to changes in the network
+      as they happen.</a>
+    </div>
+    <div class="paper">
+      <h1>Getting Started</h1>
+      <ol>
+        <li>First, there are special instructions for gaining access to the API. You can activate these
+        instructions by reading and agreeing to the <a href="./legal.html">terms of service and privacy policy</a>
+        (sorry, we have to require this).</li>
+        <li>Create a network. <a href="./api/#operation--network-post">(see how to create a network)</a></li>
+        <li>Start adding nodes (services). <a href="./api/#operation--node-post">(see how to add a node)</a></li>
+        <li>Check out the <a href="./webhooks.html">webhooks documentation</a> to react to changes in your new network catalog.</li>
+      </ol>
+      <p>
+    </div>
+    <div class="paper">
+      <h1>Why was this Created?</h1>
+      <p>We've been working on a microservices platform called <a href="http://github.com/ngnjs" target="_blank">NGN</a> on and off
+      over the last few years. With new tools like <a href="http://docker.com" target="_blank">Docker</a>,
+      <a href="http://nodejs.org" target="_blank">Node.js</a>, and <a href="https://golang.org" target="_blank">Go</a>, the
+      case for microservice infrastructure has become clearer. At Author.io, we are obsessed with making great developer
+      experiences. We felt this discovery service was a simple way to enhance the experience of microservice creation.
+      </p>
+      <p>More specifically, we're using this service with NGN. NGN has a container called the "NGN Bridge". It
+      acts like a traffic cop, directing traffic between microservices. The discovery service allows multiple
+      NGN Bridges to communicate with each other, even if they're not on the same local area network. As a result,
+      NGN can communicate with just about any microservice, whether it's on a LAN/WAN/Cloud/etc.</p>
+    </div>
+    <footer>
+      Copyright &copy; 2016 Ecor Ventures LLC. All Rights Reserved. Author.io&trade; is a mark of Ecor Ventures LLC.
+    </footer>
+    <script>
+      NGN.DOM.ready(function () {
+        NGN.DOM.svg.update()
+      })
+    </script>
   </body>
 </html>

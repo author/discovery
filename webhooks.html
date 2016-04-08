@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/chassis/1.0.33/chassis.slim.min.js"></script>
+  </head>
+  <body class="legal chassis">
+    <header class="toolbar">
+      <a href="https://author.github.io/discovery">Home</a>
+      <a href="https://author.github.io/api">API</a>
+      <a href="https://author.github.io/webhooks.html">Webhooks</a>
+      <a href="https://author.github.io/legal.html">Legal</a>
+    </header>
+    <div class="paper">
+      <h1>Webhooks</h1>
+      <p>The discovery service uses webhooks to notify servers of specific
+        actions within the discovery catalog, such as creation or modification
+        of a network or the nodes within it.</p>
+      <h2>Usage</h2>
+      <p>Webhooks are defined using the <a href="./api">Discovery API</a>. You
+      can also define a webhook using the <a href="./">wizard</a>.</p>
+      <p>The NGN discovery service will send an <code>HTTP POST</code> request to
+      your server. Your server must respond with a <code>200</code> status code within
+      approximately 90 seconds. If it fails to provide this status code in response
+      to a request, the request will be aborted. If you have provided an administrative
+      email address for your node or network, the payload will be emailed to the
+      specified administrator for debugging.</p>
+    </div>
+
+    <div class="paper">
+      <h1>Network Webhooks</h1>
+      <p>Network webhooks are sent whenever a change occurs on the network, but not on
+        specific nodes. Nodes have their own webhooks (see below).</p>
+      <div class="webhooks">
+        <h2>createnetwork</h2>
+        <p>Sent when a network is created. This only happens if a webhook
+          URL is provided to the API when the network is created.</p>
+        <h3>Example Payload</h3>
+        <pre><code>{
+  "id": "5706e6b863378b3214e4a945",
+  "created": "2016-04-07T23:01:12.341Z",
+  "modified": "2016-04-07T23:01:12.341Z",
+  "admin": "me@mydomain.com",
+  "href": "https://discovery.author.io/network/5706e6b863378b3214e4a945",
+  "action": "<span class="highlight">createnetwork</span>"
+}</code></pre>
+      </div>
+      <div class="webhooks">
+        <h2>updatenetwork</h2>
+        <p>Sent when a network is modified. This webhook is only sent when
+          changes are detected to a specific network's properties (admin/webhook).
+        Changes to nodes within the network do not trigger this webhook (see nodes).</p>
+        <p>If the webhook data itself has been modified, a webhook will be sent to both
+          the old and new. A webhook will never be sent to the same endpoint twice.</p>
+        <h3>Example Payload</h3>
+        <pre><code>{
+  "id": "5706e6b863378b3214e4a945",
+  "href": "http://127.0.0.1:8000/network/5706e6b863378b3214e4a945",
+  "old": {
+    "admin": "<span class="changefrom">me@mydomain.com</span>",
+    "webhook": "http://127.0.0.1:56789"
+  },
+  "new": {
+    "webhook": "http://127.0.0.1:56789",
+    "admin": "<span class="changeto">me2@mydomain.com</span>"
+  },
+  "action": "<span class="highlight">updatenetwork</span>"
+}</code></pre>
+      </div>
+      <div class="webhooks">
+        <h2>deletenetwork</h2>
+        <p>Sent when a network is deleted. Even though the network data has been removed,
+        this webhook will still be triggered. The details of the removed network are sent
+        as the payload.</p>
+        <h3>Example Payload</h3>
+        <pre><code>{
+  "id": "5706e6b863378b3214e4a945",
+  "created": "2016-04-07T23:01:12.341Z",
+  "modified": "2016-04-07T23:01:12.341Z",
+  "admin": "me@mydomain.com",
+  "href": "https://discovery.author.io/network/5706e6b863378b3214e4a945",
+  "nodes": [], <span class="comment">(See nodes section for object definition)</span>
+  "action": "<span class="highlight">deletenetwork</span>"
+}</code></pre>
+      </div>
+    </div>
+    <div class="paper">
+      <h1>Node Webhooks</h1>
+      <p>Just like Network webhooks, Node webhooks are triggered whenever a change occurs.</p>
+      <div class="webhooks">
+        <h2>createnode</h2>
+        <p>Sent when a node is created. The admin attribute won't be sent if it wasn't specified when
+          the node was created.</p>
+        <h3>Example Payload</h3>
+        <pre><code>{
+  "address": "myserver.com:12345",
+  "admin": "admin@domain.com", <span class="comment">Optional</span>
+  "id": "63378b3214e4a946",
+  "network_href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a",
+  "href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a/node/63378b3214e4a946"
+  "action": "<span class="highlight">createnode</span>"
+}</code></pre>
+      </div>
+      <div class="webhooks">
+        <h2>updatenode</h2>
+        <p>Sent when a network node is updated. If an encryption key was supplied, the node data may be hashed.
+        It is possible to have a combination of encrypted and unencrypted node data.</p>
+        <h3>Example Unencrypted Payload</h3>
+        <pre><code>{
+  "network_href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a",
+  "href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a/node/63378b3214e4a946"
+  "id": "63378b3214e4a946",
+  "old": {
+    data: {
+      "admin": "me@mydomain.com",
+      "address": "<span class="changefrom">http://mydomain.com:56789</span>"
+    }
+  },
+  "new": {
+    data: {
+      "admin": "me@mydomain.com",
+      "address": "<span class="changeto">http://anotherdomain.com:8181</span>"
+    }
+  },
+  "action": "<span class="highlight">updatenode</span>"
+}</code></pre>
+  <br/>
+  <h3>Example Unencrypted Payload</h3>
+  <pre><code>{
+  "network_href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a",
+  "href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a/node/63378b3214e4a946"
+  "id": "63378b3214e4a946",
+  "old": {
+    data: {
+      "encrypted": "dgdfbvdg845645tgd8veryt45ygdfbdf9g5945gwrtgwrt"
+    }
+  },
+  "new": {
+    data: {
+      "encrypted": "g845645tgd8veryt1dfb9ygdf9g5945gwrtgwrtdgdfbvd"
+    }
+  },
+  "action": "<span class="highlight">updatenode</span>"
+}</code><pre>
+      </div>
+      <div class="webhooks">
+        <h2>deletenode</h2>
+        <p>Sent when a node is deleted. If an encryption key was supplied, the data will be a hash.
+        It is possible to have a combination of encrypted and unencrypted node data.</p>
+        <h3>Example Unencrypted Payload</h3>
+        <pre><code>{
+  "network_href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a",
+  "href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a/node/63378b3214e4a946"
+  "id": "63378b3214e4a946",
+  data: {
+    "admin": "me@mydomain.com",
+    "address": "mydomain.com:56789"
+  },
+  "action": "<span class="highlight">deletenode</span>"
+}</code></pre>
+        <br/>
+        <h3>Example Encrypted Payload</h3>
+        <pre><code>{
+  "network_href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a",
+  "href": "https://discovery.author.io/network/5705d870ffaf6d784b53382a/node/63378b3214e4a946"
+  "id": "63378b3214e4a946",
+  data: {
+    "encrypted": "dgdfbvdg845645tgd8veryt45ygdfbdf9g5945gwrtgwrt"
+  },
+  "action": "<span class="highlight">deletenode</span>"
+}</code></pre>
+      </div>
+    </div>
+  </body>
+</html>
